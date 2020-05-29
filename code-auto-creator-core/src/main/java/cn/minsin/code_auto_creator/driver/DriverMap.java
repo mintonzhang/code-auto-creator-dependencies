@@ -23,8 +23,8 @@ public enum DriverMap {
     SQL_SERVER2005(DbType.SQL_SERVER2005, "com.microsoft.jdbc.sqlserver.SQLServerDriver", "com.microsoft.sqlserver.jdbc.SQLServerDriver"),
     SQL_SERVER(DbType.SQL_SERVER, "com.microsoft.sqlserver.jdbc.SQLserverDriver"),
     DM(DbType.DM, "dm.jdbc.driver.DmDriver"),
-    XU_GU(DbType.DM, "com.xugu.jdbc.Driver"),
-    KINGBASE_ES(DbType.DM, "com.kingbase.Driver"),
+    XU_GU(DbType.XU_GU, "com.xugu.jdbc.Driver"),
+    KINGBASE_ES(DbType.KINGBASE_ES, "com.kingbase.Driver"),
     ;
     private final DbType dbType;
 
