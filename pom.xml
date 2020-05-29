@@ -10,6 +10,8 @@
     <modules>
         <module>code-auto-creator-core</module>
         <module>code-auto-creator-javafx-client</module>
+        <module>code-auto-creator-react-client</module>
+        <module>code-auto-creator-react-server</module>
     </modules>
     <packaging>pom</packaging>
 
