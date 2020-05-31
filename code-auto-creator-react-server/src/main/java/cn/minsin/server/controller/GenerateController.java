@@ -55,12 +55,6 @@ public class GenerateController {
         httpServletResponse.setCharacterEncoding(StandardCharsets.UTF_8.name());
         ServletOutputStream outputStream = httpServletResponse.getOutputStream();
         try {
-            //查找驱动
-            webGeneratorParams = new WebGeneratorParams();
-            webGeneratorParams.setConnectUrl("jdbc:mysql://120.26.174.221:3306/nacos");
-            webGeneratorParams.setPassword("minsin");
-            webGeneratorParams.setUsername("root");
-            webGeneratorParams.setDbType(DriverMap.MYSQL);
             httpServletResponse.setContentType("application/x-msdownload; charset=utf-8");
             String name = "generator-code-" + System.currentTimeMillis() + ".zip";
             httpServletResponse.setHeader("content-disposition", "attachment;filename=" + name);
