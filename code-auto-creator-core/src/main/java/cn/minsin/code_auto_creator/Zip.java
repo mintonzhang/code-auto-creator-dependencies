@@ -55,34 +55,37 @@ public class Zip {
 
     /**
      * 压缩文件
+     *
      * @param outputStream 输出文件流
      * @throws IOException
      */
-    public void zip(OutputStream outputStream) throws IOException {
+    public void zip(OutputStream outputStream, String zipName) throws IOException {
         @Cleanup OutputStream copyOutputStream = outputStream;
         @Cleanup ZipOutputStream zipOutputStream = new ZipOutputStream(copyOutputStream);
         for (File file : files) {
-            ZipUtil.zipDictionary(file, null, zipOutputStream);
+            ZipUtil.zipDictionary(file, zipName, zipOutputStream);
         }
     }
 
     /**
      * 压缩文件
+     *
      * @param saveFile 输出文件夹
      * @throws IOException
      */
-    public void zip(File saveFile) throws IOException {
+    public void zip(File saveFile, String zipName) throws IOException {
         @Cleanup
         FileOutputStream fileOutputStream = new FileOutputStream(saveFile);
         @Cleanup
         ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
         for (File file : files) {
-            ZipUtil.zipDictionary(file, null, zipOutputStream);
+            ZipUtil.zipDictionary(file, zipName, zipOutputStream);
         }
     }
 
     /**
      * 解压文件
+     *
      * @param saveDictionary
      * @param ifErrorContinue
      * @throws IOException

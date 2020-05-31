@@ -32,6 +32,15 @@ public class MyDataSourceConfig extends DataSourceConfig {
         return dataSourceConfig;
     }
 
+    public static MyDataSourceConfig of(String url, String username, String password, DbType datasourceType, String driverName) {
+        return of(url, username, password, datasourceType).setDriverName(driverName);
+    }
+
+    @Override
+    public MyDataSourceConfig setDriverName(String driverName) {
+        super.setDriverName(driverName);
+        return this;
+    }
 
     /**
      * The

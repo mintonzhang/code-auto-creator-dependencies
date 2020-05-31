@@ -25,6 +25,8 @@ public class ClientGeneratorParams extends GeneratorParams {
     //数据库配置
     public String urlText;
 
+    public boolean isOverrideFile;
+
     public String usernameText;
     public String passwordText;
     public String databaseTypeValue;

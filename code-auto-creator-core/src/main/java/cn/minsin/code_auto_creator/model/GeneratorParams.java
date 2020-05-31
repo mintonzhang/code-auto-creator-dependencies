@@ -1,6 +1,7 @@
 package cn.minsin.code_auto_creator.model;
 
-import com.baomidou.mybatisplus.annotation.DbType;
+import cn.minsin.code_auto_creator.driver.DriverMap;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -14,51 +15,58 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class GeneratorParams {
 
-//    public String globalDir;
-//
-//    public String entityDir;
-
+    @ApiModelProperty("The basic entity class name like 'cn.minsin.model.BaseModel'")
     public String entityBaseClass;
 
-    public String entitySuffix;
+    @ApiModelProperty("The entity Suffix like 'PO'")
+    public String entitySuffix = "PO";
 
-    public String entityPackage;
+    @ApiModelProperty("The entity package like 'cn.minsin.model")
+    public String entityPackage = "cn.minsin.model";
 
+    @ApiModelProperty("The logic delete  like 'del_flag")
     public String logicDeleteFiled;
 
-
-//    public String mapperDir;
-
+    @ApiModelProperty("The basic mapper class name like 'cn.minsin.model.BaseMapper'")
     public String mapperBaseClass;
 
-    public String mapperSuffix;
+    @ApiModelProperty("The mapper suffix like 'Mapper'")
+    public String mapperSuffix = "Mapper";
 
-    public String mapperPackage;
+    @ApiModelProperty("The mapper package like 'cn.minsin.mapper'")
+    public String mapperPackage = "cn.minsin.mapper";
 
-//    public String xmlDir;
+    @ApiModelProperty("Use or not lombok default 'true'")
+    public boolean isEnableLombok = true;
 
-    public boolean isEnableLombok;
+    @ApiModelProperty("If true, java.util.Data will be used, otherwise java.time.*")
+    public boolean isDate = true;
 
-    public boolean isDate;
+    @ApiModelProperty("Whether to enable hump conversion")
+    public boolean isUnderlineToCamel = true;
 
-    public boolean isUnderlineToCamel;
+    @ApiModelProperty("Whether to skip the view")
+    public boolean isSkipView = false;
 
-    public boolean isSkipView;
-
+    @ApiModelProperty("Table to be generated If not filled, all tables will be generated")
     public String[] tables;
 
+    @ApiModelProperty("Table prefix If filled, it will not be generated into the class or interface name when it is generated")
     public String[] tablePrefix;
 
-    public boolean isOverrideFile;
-
     //数据库配置
+    @ApiModelProperty(value = "The datasource connect url", required = true)
     public String connectUrl;
 
+    @ApiModelProperty(value = "username of the database", required = true)
     public String username;
 
+    @ApiModelProperty(value = "password of the database", required = true)
     public String password;
 
-    public DbType datasourceType;
+    @ApiModelProperty(value = "password of the database", required = true)
+    public DriverMap dbType;
 
-    public String driver;
+    @ApiModelProperty(value = "If fill in, you will use this driver")
+    public String driverName;
 }

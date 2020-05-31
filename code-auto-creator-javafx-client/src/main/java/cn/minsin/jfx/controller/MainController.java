@@ -162,12 +162,12 @@ public class MainController implements Initializable {
             clientGeneratorParams.setGlobalDir(globalDirValue)
                     .setEntityDir(entityDirValue)
                     .setMapperDir(mapperDirValue)
+                    .setOverrideFile(isOverrideValue)
                     .setXmlDir(mapperXmlDirValue);
             clientGeneratorParams.setDate(isDateValue)
                     .setSkipView(isSkipViewValue)
                     .setUnderlineToCamel(isUnderlineToCamelValue)
                     .setEnableLombok(isEnableLombokValue)
-                    .setOverrideFile(isOverrideValue)
                     .setEntityBaseClass(entityBaseClassText)
                     .setMapperBaseClass(mapperBaseClassText)
                     .setEntityPackage(entityPackageText)
@@ -177,7 +177,7 @@ public class MainController implements Initializable {
                     .setLogicDeleteFiled(logicDeleteText)
                     .setTables(tableArray)
                     .setTablePrefix(tablePrefixesArray);
-            new MyAutoGenerator(dataSourceConfig, clientGeneratorParams).setGlobalDir(globalDirValue).run((e) -> {
+            new MyAutoGenerator(dataSourceConfig, clientGeneratorParams).setGlobalDir(globalDirValue).execute((e) -> {
             });
 
             //SaveFile

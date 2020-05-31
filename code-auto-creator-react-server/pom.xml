@@ -2,84 +2,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<parent>
-    <artifactId>code-auto-creator-dependencies</artifactId>
-    <groupId>cn.minsin</groupId>
-    <version>1.0</version>
-</parent>
-<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>code-auto-creator-dependencies</artifactId>
+        <groupId>cn.minsin</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-<artifactId>code-auto-creator-react-server</artifactId>
+    <artifactId>code-auto-creator-react-server</artifactId>
 
-<properties>
-    <main.basedir>${project.parent.basedir}</main.basedir>
-</properties>
+    <properties>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+    </properties>
 
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>2.3.0.RELEASE</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-devtools</artifactId>
-        <version>2.3.0.RELEASE</version>
-    </dependency>
-</dependencies>
-
-<build>
-    <plugins>
-        <plugin>
+    <dependencies>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-resources-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>copy-resources</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-                    <configuration>
-                        <outputDirectory>${basedir}/target/classes/static</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${main.basedir}/frontend/build</directory>
-                                <filtering>false</filtering>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <compilerId>javac-with-errorprone</compilerId>
-                <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                <source>${java.version}</source>
-                <target>${java.version}</target>
-                <showWarnings>true</showWarnings>
-            </configuration>
-            <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.plexus</groupId>
-                    <artifactId>plexus-compiler-javac-errorprone</artifactId>
-                    <version>2.8.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>com.google.errorprone</groupId>
-                    <artifactId>error_prone_core</artifactId>
-                    <version>2.0.19</version>
-                </dependency>
-            </dependencies>
-        </plugin>
-    </plugins>
-</build>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.minsin</groupId>
+            <artifactId>code-auto-creator-core</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!-- swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.minsin</groupId>
+            <artifactId>mutils-core-web</artifactId>
+            <version>${mutils.version}</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.3.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <optional>true</optional>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

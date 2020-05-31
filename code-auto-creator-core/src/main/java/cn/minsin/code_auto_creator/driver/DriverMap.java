@@ -1,6 +1,7 @@
 package cn.minsin.code_auto_creator.driver;
 
 import com.baomidou.mybatisplus.annotation.DbType;
+import lombok.Getter;
 
 import java.util.HashMap;
 
@@ -10,6 +11,7 @@ import java.util.HashMap;
  * @author: minton.zhang
  * @since: 2020/5/29 13:49
  */
+@Getter
 public enum DriverMap {
     MYSQL(DbType.MYSQL, "com.mysql.jdbc.Driver", "com.mysql.cj.jdbc.Driver"),
     MARIADB(DbType.MARIADB, "com.mysql.jdbc.Driver", "org.mariadb.jdbc.Driver "),
@@ -35,16 +37,20 @@ public enum DriverMap {
         this.driverName = driverName;
     }
 
-    private static final HashMap<DbType, String[]> MAP = new HashMap<>(20);
+    private static final HashMap<DbType, DriverMap> MAP = new HashMap<>(20);
 
     static {
         DriverMap[] values = DriverMap.values();
         for (DriverMap value : values) {
-            MAP.put(value.dbType, value.driverName);
+            MAP.put(value.dbType, value);
         }
     }
 
     public static String[] getDriverClasses(DbType dbType) {
+        return MAP.get(dbType).getDriverName();
+    }
+
+    public static DriverMap getDriverMap(DbType dbType) {
         return MAP.get(dbType);
     }
 }
