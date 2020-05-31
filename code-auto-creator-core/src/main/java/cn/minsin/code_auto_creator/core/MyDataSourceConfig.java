@@ -88,7 +88,7 @@ public class MyDataSourceConfig extends DataSourceConfig {
                     //
                 }
             }
-            throw new UnsupportedOperationException("未找到合适的驱动程序");
+            throw new UnsupportedOperationException("No suitable driver found");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
